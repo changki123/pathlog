@@ -72,7 +72,7 @@ fn VideoPage() -> impl IntoView {
 
     view! {
         <div class="detail">
-            <a class="back-link" href="/">"\u2190 back"</a>
+            <a class="back-link" href="/">"\u{2190} back"</a>
             {move || match video() {
                 Some(v) => view! {
                     <div>
@@ -84,7 +84,7 @@ fn VideoPage() -> impl IntoView {
                             on:contextmenu=|ev| ev.prevent_default()
                         ></video>
                         <h2 class="detail-title">{v.title}</h2>
-                        <div class="detail-meta">{v.location} " \u00b7 " {v.date}</div>
+                        <div class="detail-meta">{v.location} " \u{00b7} " {v.date}</div>
                     </div>
                 }.into_view(),
                 None => view! { <p>"video not found"</p> }.into_view()
