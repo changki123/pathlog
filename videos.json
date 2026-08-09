@@ -1,35 +1,11 @@
 [
   {
-    "id": "trip1",
-    "title": "주도",
-    "description": "이게 브이로그인가\n220506 ~ 220510\n-----------------------------------------------\nMusic\nGalantis - Satisfied feat. MAX (Official Music Video)\nhttps://youtu.be/WBn8UBci5cA",
+    "id": "trip6",
+    "title": "숨쉬기만 해도 고칼로리 히로시마 여행",
+    "description": "20260725 ~ 20250728\nhiroshima 3인팟\n\n썸네일 고오급 머리핀",
     "date": "2026-08-09",
-    "src": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip1.mp4",
-    "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som1.jpg"
-  },
-  {
-    "id": "trip2",
-    "title": "VISIT FUKUOKA",
-    "description": "If you subscribe, I eat ice cream.\n購読時に私がアイスクリームを食べます。\n구독시 내가 아이스크림을 먹습니다.",
-    "date": "2026-08-09",
-    "src": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip2.mp4",
-    "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som2.jpg"
-  },
-  {
-    "id": "trip3",
-    "title": "바보들",
-    "description": "강원도 어딘가 끌려갔는데 어디지?\n24.11.09 ~ 24.11.10\n해석 : 누가 같이 안옴\n그리고 가로사진 왜 눌려있지..?",
-    "date": "2026-08-09",
-    "src": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip3.mp4",
-    "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som3.jpg"
-  },
-  {
-    "id": "trip4",
-    "title": "25년 후쿠오카 텐만궁편 3인팟 (feat. 2명의 친구들)",
-    "description": "250522~250524\n기존 테스트04였던.. 것\n좀 더 할 수 있는데 아쉬운 영상",
-    "date": "2026-08-09",
-    "src": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip4.mp4",
-    "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som4.png"
+    "src": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip6.mp4",
+    "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som6.png"
   },
   {
     "id": "trip5",
@@ -40,11 +16,40 @@
     "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som5.jpg"
   },
   {
-    "id": "trip6",
-    "title": "숨쉬기만 해도 고칼로리 히로시마 여행",
-    "description": "20260725 ~ 20250728\nhiroshima 3인팟\n\n썸네일 고오급 머리핀",
+    "id": "trip4",
+    "title": "25년 후쿠오카 텐만궁편 3인팟 (feat. 2명의 친구들)",
+    "description": "250522~250524\n기존 테스트04였던.. 것\n좀 더 할 수 있는데 아쉬운 영상",
     "date": "2026-08-09",
-    "src": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip6.mp4",
-    "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som6.png"
+    "src": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip4.mp4",
+    "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som4.png"
+  },
+  {
+    "id": "trip3",
+    "title": "바보들",
+    "description": "강원도 어딘가 끌려갔는데 어디지?\n24.11.09 ~ 24.11.10\n해석 : 누가 같이 안옴\n그리고 가로사진 왜 눌려있지..?",
+    "date": "2026-08-09",
+    "src": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip3.mp4",
+    "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som3.png"
+  },
+  {
+    "id": "trip2",
+    "title": "VISIT FUKUOKA",
+    "description": "If you subscribe, I eat ice cream.\n購読時に私がアイスクリームを食べます。\n구독시 내가 아이스크림을 먹습니다.",
+    "date": "2026-08-09",
+    "src": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip2.mp4",
+    "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som2.jpg"
+  },
+  {
+    "id": "trip1",
+    "title": "주도",
+    "description": "이게 브이로그인가\n220506 ~ 220510\n-----------------------------------------------\nMusic\nGalantis - Satisfied feat. MAX (Official Music Video)\nhttps://youtu.be/WBn8UBci5cA",
+    "date": "2026-08-09",
+    "src": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip1.mp4",
+    "thumb": "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/thumbnails/som1.jpg"
   }
+
+
+
+
+
 ]
