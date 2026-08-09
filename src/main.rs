@@ -38,7 +38,7 @@ fn App() -> impl IntoView {
 
 #[component]
 fn HomePage() -> impl IntoView {
-    let videos = create_resource(|| (), |_| async move { fetch_videos().await });
+    let videos = create_local_resource(|| (), |_| async move { fetch_videos().await });
 
     view! {
         <Suspense fallback=|| view! { <p class="loading">"불러오는 중..."</p> }>
@@ -70,7 +70,7 @@ fn HomePage() -> impl IntoView {
 fn VideoPage() -> impl IntoView {
     let params = use_params_map();
     let id = move || params.with(|p| p.get("id").cloned().unwrap_or_default());
-    let videos = create_resource(|| (), |_| async move { fetch_videos().await });
+    let videos = create_local_resource(|| (), |_| async move { fetch_videos().await });
 
     view! {
         <div class="detail">
