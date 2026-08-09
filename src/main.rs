@@ -73,7 +73,23 @@ fn VideoPage() -> impl IntoView {
     let params = use_params_map();
     let id = move || params.with(|p| p.get("id").cloned().unwrap_or_default());
     let videos = create_local_resource(|| (), |_| async move { fetch_videos().await });
+
     let copied = create_rw_signal(false);
+
+    let share = move |_| {
+        if let Some(window) = web_sys::window() {
+            let url = window.location().href().unwrap_or_default();
+            let clipboard = window.navigator().clipboard();
+            spawn_local(async move {
+                let _ = wasm_bindgen_futures::JsFuture::from(clipboard.write_text(&url)).await;
+            });
+        }
+        copied.set(true);
+        spawn_local(async move {
+            gloo_timers::future::TimeoutFuture::new(1500).await;
+            copied.set(false);
+        });
+    };
 
     view! {
         <div class="detail">
@@ -104,21 +120,6 @@ fn VideoPage() -> impl IntoView {
             </Suspense>
         </div>
     }
-
-    let share = move |_| {
-        if let Some(window) = web_sys::window() {
-            let url = window.location().href().unwrap_or_default();
-            let clipboard = window.navigator().clipboard();
-            spawn_local(async move {
-                let _ = wasm_bindgen_futures::JsFuture::from(clipboard.write_text(&url)).await;
-            });
-        }
-        copied.set(true);
-        spawn_local(async move {
-            gloo_timers::future::TimeoutFuture::new(1500).await;
-            copied.set(false);
-        });
-    };
 }
 
 fn main() {
