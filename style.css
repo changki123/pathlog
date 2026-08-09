@@ -135,6 +135,21 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.03em;
 }
 
+.detail-desc {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-top: 0.8rem;
+}
+
+.loading {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  padding: 2rem;
+  text-align: center;
+}
+
 @media (max-width: 480px) {
   .site-title { font-size: 1.6rem; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }

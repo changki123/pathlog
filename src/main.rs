@@ -1,24 +1,21 @@
 use leptos::*;
 use leptos_router::*;
+use serde::Deserialize;
 
-#[derive(Clone)]
+#[derive(Clone, Deserialize)]
 struct Video {
-    id: &'static str,
-    title: &'static str,
-    location: &'static str,
-    date: &'static str,
-    src: &'static str,
+    id: String,
+    title: String,
+    description: String,
+    date: String,
+    src: String,
 }
 
-// TODO: 나중에 Lambda API에서 목록을 받아오도록 교체
-fn videos() -> Vec<Video> {
-    vec![Video {
-        id: "trip6",
-        title: "trip6",
-        location: "unknown",
-        date: "2026",
-        src: "https://pub-de6b3d11021b47d7a23fcdd4a9de93c2.r2.dev/videos/trip6.mp4",
-    }]
+async fn fetch_videos() -> Vec<Video> {
+    match gloo_net::http::Request::get("/videos.json").send().await {
+        Ok(resp) => resp.json::<Vec<Video>>().await.unwrap_or_default(),
+        Err(_) => vec![],
+    }
 }
 
 #[component]
@@ -41,26 +38,31 @@ fn App() -> impl IntoView {
 
 #[component]
 fn HomePage() -> impl IntoView {
+    let videos = create_resource(|| (), |_| async move { fetch_videos().await });
+
     view! {
-        <div class="grid">
-            {videos().into_iter().map(|v| {
-                let href = format!("/video/{}", v.id);
-                view! {
-                    <a href=href>
-                        <div class="card">
-                            <div class="card-thumb"></div>
-                            <div class="card-body">
-                                <h3 class="card-title">{v.title}</h3>
-                                <div class="card-meta">
-                                    <span>{v.location}</span>
-                                    <span class="stamp">{v.date}</span>
+        <Suspense fallback=|| view! { <p class="loading">"불러오는 중..."</p> }>
+            {move || videos.get().map(|list| view! {
+                <div class="grid">
+                    {list.into_iter().map(|v| {
+                        let href = format!("/video/{}", v.id);
+                        view! {
+                            <a href=href>
+                                <div class="card">
+                                    <div class="card-thumb"></div>
+                                    <div class="card-body">
+                                        <h3 class="card-title">{v.title}</h3>
+                                        <div class="card-meta">
+                                            <span class="stamp">{v.date}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </a>
-                }
-            }).collect_view()}
-        </div>
+                            </a>
+                        }
+                    }).collect_view()}
+                </div>
+            })}
+        </Suspense>
     }
 }
 
@@ -68,27 +70,32 @@ fn HomePage() -> impl IntoView {
 fn VideoPage() -> impl IntoView {
     let params = use_params_map();
     let id = move || params.with(|p| p.get("id").cloned().unwrap_or_default());
-    let video = move || videos().into_iter().find(|v| v.id == id());
+    let videos = create_resource(|| (), |_| async move { fetch_videos().await });
 
     view! {
         <div class="detail">
             <a class="back-link" href="/">"\u{2190} back"</a>
-            {move || match video() {
-                Some(v) => view! {
-                    <div>
-                        <video
-                            src=v.src
-                            controls
-                            controlslist="nodownload"
-                            disablepictureinpicture
-                            on:contextmenu=|ev| ev.prevent_default()
-                        ></video>
-                        <h2 class="detail-title">{v.title}</h2>
-                        <div class="detail-meta">{v.location} " \u{00b7} " {v.date}</div>
-                    </div>
-                }.into_view(),
-                None => view! { <p>"video not found"</p> }.into_view()
-            }}
+            <Suspense fallback=|| view! { <p class="loading">"불러오는 중..."</p> }>
+                {move || videos.get().map(|list| {
+                    match list.into_iter().find(|v| v.id == id()) {
+                        Some(v) => view! {
+                            <div>
+                                <video
+                                    src=v.src
+                                    controls
+                                    controlslist="nodownload"
+                                    disablepictureinpicture
+                                    on:contextmenu=|ev| ev.prevent_default()
+                                ></video>
+                                <h2 class="detail-title">{v.title}</h2>
+                                <div class="detail-meta">{v.date}</div>
+                                <p class="detail-desc">{v.description}</p>
+                            </div>
+                        }.into_view(),
+                        None => view! { <p>"video not found"</p> }.into_view()
+                    }
+                })}
+            </Suspense>
         </div>
     }
 }
