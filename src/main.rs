@@ -9,6 +9,7 @@ struct Video {
     description: String,
     date: String,
     src: String,
+    thumb: String,
 }
 
 async fn fetch_videos() -> Vec<Video> {
@@ -23,8 +24,8 @@ fn App() -> impl IntoView {
     view! {
         <Router>
             <header class="site-header">
-                <h1 class="site-title">"pathlog"</h1>
-                <p class="site-tagline">"travel, logged"</p>
+                <h1 class="site-title">"ljh-trip"</h1>
+                <p class="site-tagline">"travel, logged, 네이버TV 마이그레이션"</p>
             </header>
             <main>
                 <Routes>
@@ -49,7 +50,7 @@ fn HomePage() -> impl IntoView {
                         view! {
                             <a href=href>
                                 <div class="card">
-                                    <div class="card-thumb"></div>
+                                    <img class="card-thumb" src=v.thumb.clone() />
                                     <div class="card-body">
                                         <h3 class="card-title">{v.title}</h3>
                                         <div class="card-meta">
