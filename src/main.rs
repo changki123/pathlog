@@ -26,7 +26,7 @@ fn App() -> impl IntoView {
         <Router>
             <header class="site-header">
                 <h1 class="site-title">"ljh-trip"</h1>
-                <p class="site-tagline">"travel, logged, 네이버TV 마이그레이션(260809)"</p>
+                <p class="site-tagline">"travel, 네이버TV 마이그레이션(260809), Leptos(Rust/WASM) + Trunk + GitHub Pages/Actions + Cloudflare R2/DNS"</p>
             </header>
             <main>
                 <Routes>
